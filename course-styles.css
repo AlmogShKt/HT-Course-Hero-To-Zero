@@ -1,0 +1,191 @@
+/* Course-specific styles */
+.hero-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-tagline {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-cta {
+    margin-top: 20px;
+}
+
+.about-section, .course-content-section, .target-audience-section, .recommendations-section {
+    padding: 60px 0;
+    background: white;
+    margin: 30px auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 3px;
+}
+
+.about-content, .course-content, .target-audience-content, .recommendations-content {
+    padding: 0 30px;
+}
+
+.about-image {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.about-image img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f0f0f0;
+}
+
+.course-topics {
+    list-style-type: none;
+    padding: 0;
+}
+
+.course-topics li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+    padding-right: 30px;
+}
+
+.course-topics li:before {
+    content: "✓";
+    color: #667eea;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+}
+
+.course-topics li:last-child {
+    border-bottom: none;
+}
+
+.target-audience-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.target-audience-item {
+    background: #f7f7f7;
+    padding: 15px 20px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.recommendation-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.recommendation-content {
+    font-style: italic;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.recommendation-content:before {
+    content: """;
+    font-size: 60px;
+    color: #e0e0e0;
+    position: absolute;
+    top: -20px;
+    right: -15px;
+    z-index: 0;
+}
+
+.recommendation-author {
+    font-weight: 500;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.enroll-section {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+}
+
+.price-tag {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.discount {
+    color: #cc0000;
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .about-section, .course-content-section, .target-audience-section, .recommendations-section {
+        padding: 40px 0;
+        margin: 20px 15px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.1rem;
+    }
+}
