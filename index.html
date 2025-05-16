@@ -11,6 +11,37 @@
       href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YSCK9JQSQ3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-YSCK9JQSQ3");
+
+      // Custom event tracking functions
+      function trackCourseClick() {
+        gtag("event", "click", {
+          event_category: "engagement",
+          event_label: "course_info",
+          value: 1,
+        });
+      }
+
+      function trackRegistration() {
+        gtag("event", "registration", {
+          event_category: "conversion",
+          event_label: "webinar_signup",
+          value: 1,
+        });
+      }
+    </script>
     <!-- External CSS file -->
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -26,7 +57,12 @@
           <h2>הוובינר הקרוב: יום חמישי, 29 במאי 2025, בשעה 18:00</h2>
           <p>הירשמו עכשיו להבטחת מקומכם!</p>
           <div class="hero-cta">
-            <a href="course.html" class="cta-button">לפרטים על הקורס המלא</a>
+            <a
+              href="course.html"
+              class="cta-button"
+              onclick="trackCourseClick()"
+              >לפרטים על הקורס המלא</a
+            >
           </div>
         </div>
       </div>
@@ -180,12 +216,14 @@
           </div>
           <div class="form-container">
             <iframe
+              id="registrationForm"
               src="https://docs.google.com/forms/d/e/1FAIpQLSdAwM9p4_PsD8oNfw2Qbhiso2nKU3P3otQCDgGXivpSoSsREw/viewform?embedded=true"
               width="640"
               height="551"
               frameborder="0"
               marginheight="0"
               marginwidth="0"
+              onload="this.setAttribute('data-loaded', 'true')"
               >Loading…</iframe
             >
           </div>
@@ -199,5 +237,42 @@
         <p class="github-note">האתר מאוחסן באמצעות GitHub Pages</p>
       </div>
     </footer>
+
+    <script>
+      // Track form submission via iframe message listening
+      window.addEventListener("message", function (event) {
+        if (event.data.includes && event.data.includes("formSubmitted")) {
+          trackRegistration();
+        }
+      });
+
+      // Alternative tracking for form element visibility changes that may indicate submission
+      const formObserver = new MutationObserver(function (mutations) {
+        const form = document.getElementById("registrationForm");
+        if (form.getAttribute("data-loaded") === "true") {
+          try {
+            const formDoc = form.contentDocument || form.contentWindow.document;
+            if (
+              formDoc &&
+              formDoc.querySelector(
+                ".freebirdFormviewerViewResponseConfirmContentContainer"
+              )
+            ) {
+              trackRegistration();
+              formObserver.disconnect();
+            }
+          } catch (e) {
+            // Cross-origin restrictions may apply
+          }
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("registrationForm");
+        if (form) {
+          formObserver.observe(form, { attributes: true });
+        }
+      });
+    </script>
   </body>
 </html>
