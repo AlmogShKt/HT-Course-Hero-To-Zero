@@ -282,6 +282,16 @@
     color: #cc0000;
 }
 
+/* Styling for the recommendations image */
+.recommendations-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .about-section, .course-content-section, .target-audience-section, .recommendations-section {
